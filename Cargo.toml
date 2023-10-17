@@ -1,0 +1,24 @@
+[package]
+name = "plonky2-cook"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+plonky2 = { path = "../plonky2/plonky2" }               # https://github.com/mir-protocol/plonky2
+# plonky2_ecdsa = {path = "../plonky2-ecdsa"}             # https://github.com/xiyu1984/plonky2-ecdsa/tree/development
+# plonky2_keccak256 = {path = "../plonky2-keccak256"}     # https://github.com/kay404/plonky2-keccak256/tree/xy-dev
+# plonky2_u32 = {path = "../plonky2-u32"}                 # https://github.com/xiyu1984/plonky2-u32
+plonky2_field = {path = "../plonky2/field"}             # https://github.com/mir-protocol/plonky2
+
+# num = { version = "= 0.4.0", default-features = false }
+anyhow = { version = "1.0.40", default-features = false }
+# itertools = { version = "0.11.0", default-features = false }
+
+# hex = {version = "0.4.3"}
+log = "0.4.14"
+env_logger = "0.10.0"
+# clap = { version = "4.0.29", features = ["derive"] }
+
+# sha3 = { version = "0.10.*" }
