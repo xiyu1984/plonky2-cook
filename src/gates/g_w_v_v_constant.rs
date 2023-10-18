@@ -21,6 +21,7 @@ use plonky2::plonk::vars::{
 };
 use plonky2::util::serialization::{Buffer, IoResult, Read, Write};
 
+// This example is trivial but shows how to design and use `gate`
 #[derive(Debug, Clone, Default)]
 pub struct SimpleExpConstantGate {
     pub num_limbs: usize
@@ -157,14 +158,14 @@ impl<F: RichField + Extendable<D>, const D: usize> Gate<F, D> for SimpleExpConst
 
     // how to determine the `degree`?
     // the `degree` is determined by the whole connected circuits of the gate
+    // Notice: the degree here is different from `gate_with_veriable_vars` as every limb is decomposed from the calculation chain, 
+    // which is shown in the `for` loop of the function `eval_unfiltered_circuit`
     fn degree(&self) -> usize {
-        // self.num_limbs
         2
     }
 
     fn num_constraints(&self) -> usize {
         self.num_limbs + 1
-        // 1
     }
 }
 
@@ -296,9 +297,10 @@ mod tests {
     }
 
     // this will be failed
+    // Note:  `generator` cannot be used directly when using `gate`
     #[test]
-    #[ignore]
-    fn test_generator() ->Result<()> {
+    #[should_panic]
+    fn test_generator() {
         const D: usize = 2;
         type C = PoseidonGoldilocksConfig;
         type F = <C as GenericConfig<D>>::F;
@@ -307,7 +309,7 @@ mod tests {
         let mut builder = CircuitBuilder::<F, D>::new(config);
 
         let secg = SimpleExpConstantGenerator::<F, D> {
-            row: 1,
+            row: 1,     // No matter how to set the row directly, the underlying error will happen
             gate: SimpleExpConstantGate { num_limbs: 0 },
             const_base: F::from_canonical_u32(2)
         };
@@ -340,13 +342,14 @@ mod tests {
         // println!("in pw: {:?}", pw.get_target(Target::wire(1, 0)));
 
         let data = builder.build::<C>();
-        let proof = data.prove(pw.clone())?;
+        let proof = data.prove(pw.clone()).unwrap();
 
-        data.verify(proof)
+        data.verify(proof).unwrap();
 
     }
 
     // Nice trying! This is how to use `gate`.
+    // Here is the correct way to use `gate`.
     #[test]
     fn test_gate() -> Result<()> {
         const D: usize = 2;

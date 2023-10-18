@@ -268,7 +268,7 @@ mod tests {
         let mut log_builder = env_logger::Builder::from_default_env();
         log_builder.format_timestamp(None);
         log_builder.filter_level(LevelFilter::Info);
-        log_builder.try_init().unwrap();
+        // log_builder.try_init().unwrap();
 
         const D: usize = 2;
         type C = PoseidonGoldilocksConfig;
@@ -287,10 +287,6 @@ mod tests {
         let oxy = builder.add(oxy, xx);
         let oxy = builder.add(oxy, yy);
         let output = builder.add(oxy, z);
-        // let x_add_x = builder.add(x, x);
-        // let x_add_x_2 = builder.add(x, x);
-        // let add_mul_add = builder.mul(x_add_x, x_add_x_2);
-
 
         info!("before build row `x`: {:?}", x);
         info!("before build row `y`: {:?}", y);
@@ -316,11 +312,6 @@ mod tests {
         pw.set_target(z, F::ONE);
 
         let _proof = data.prove(pw.clone()).unwrap();
-
-        // info!("after build and prove row `x`: {:?}", x);
-        // info!("after build and prove row `x_add_x`: {:?}", x_add_x);
-        // info!("before build row `x_add_x`: {:?}", x_add_x_2);
-        // info!("after build and prove row `x_mul_x`: {:?}", add_mul_add);
     }
 
     #[test]
