@@ -6,9 +6,14 @@ This repo shows how to use `generator` and `gate`, which are the low level API o
 
 ## Env
 
+### Rust 
+
 ```sh
 rustup override set nightly
 ```
+### plonky2
+
+This repo uses the latest [`plonky2` version](https://github.com/0xPolygonZero/plonky2).  
 
 ## Test
 
