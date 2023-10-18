@@ -283,6 +283,8 @@ mod tests {
 
     #[test]
     fn low_degree() {
+        // Here we can set the input parameter `power` very large, for example `16000` just needs abount 2s.
+        // This is because the calculation chain is decomposed.
         let gate = SimpleExpConstantGate::new(16, &CircuitConfig::standard_recursion_config());
         test_low_degree::<GoldilocksField, _, 4>(gate);
     }

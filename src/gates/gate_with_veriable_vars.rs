@@ -277,6 +277,8 @@ mod tests {
 
     #[test]
     fn low_degree() {
+        // Here the input parameter `power` cannot be very large, for example `1000` will take a long time.
+        // This is because the calculation chain is composed.
         let gate = SimpleExpTestGate::new(8, &CircuitConfig::standard_recursion_config());
         test_low_degree::<GoldilocksField, _, 4>(gate);
     }
