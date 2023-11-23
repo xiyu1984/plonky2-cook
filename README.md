@@ -51,6 +51,13 @@ This repo uses the latest [`plonky2` version](https://github.com/0xPolygonZero/p
     cargo test -r --package plonky2-cook --lib -- gates::g_w_v_v_constant::tests::test_gate --exact --nocapture
     ```
 
+- `libtests`
+    - `merkle_tree_test`
+
+        ```sh
+        cargo test -r --package plonky2-cook --lib -- libtests::merkle_tree_test::tests --nocapture
+        ```
+
 - Test all
 
     ```sh

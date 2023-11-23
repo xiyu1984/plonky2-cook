@@ -5,3 +5,4 @@
 #![feature(generic_const_exprs)]
 
 pub mod gates;
+pub mod libtests;
