@@ -56,6 +56,11 @@ This repo uses the latest [`plonky2` version](https://github.com/0xPolygonZero/p
 
         ```sh
         cargo test -r --package plonky2-cook --lib -- libtests::merkle_tree_test::tests --nocapture
+
+        cargo test -r --package plonky2-cook --lib -- libtests::merkle_tree_test::tests::details_of_merkle_tree_keccak --exact --nocapture
+
+        cargo test -r --package plonky2-cook --lib -- libtests::merkle_tree_test::tests::test_two_keccak256_lib --exact --nocapture
+
         ```
 
 - Test all
