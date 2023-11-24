@@ -95,7 +95,7 @@ mod tests {
         let mut log_builder = env_logger::Builder::from_default_env();
         log_builder.format_timestamp(None);
         log_builder.filter_level(LevelFilter::Info);
-        log_builder.try_init().unwrap();
+        let _ = log_builder.try_init();
 
         const D: usize = 2;
         type C = KeccakGoldilocksConfig;
@@ -126,7 +126,7 @@ mod tests {
         let mut log_builder = env_logger::Builder::from_default_env();
         log_builder.format_timestamp(None);
         log_builder.filter_level(LevelFilter::Info);
-        log_builder.try_init().unwrap();
+        let _ = log_builder.try_init();
 
         const D: usize = 2;
         type C = KeccakGoldilocksConfig;
@@ -142,7 +142,7 @@ mod tests {
 
         let tree = merkle_tree::MerkleTree::<F, <C as GenericConfig<D>>::Hasher>::new(leaves.clone(), 0);
 
-        info!("The root hash of the merkle tree is: {:#?}", tree.cap.0[0]);
+        info!("The root hash of the merkle tree is: {:?}", tree.cap.0[0]);
 
         Ok(())
     }
