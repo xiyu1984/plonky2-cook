@@ -63,6 +63,13 @@ This repo uses the latest [`plonky2` version](https://github.com/0xPolygonZero/p
 
         ```
 
+- `circuit tests`
+    ```sh
+    
+    cargo test -r --package plonky2-cook --lib -- libtests::circuit_test::tests --nocapture
+
+    ```
+
 - Test all
 
     ```sh

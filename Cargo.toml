@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 plonky2 = { path = "../plonky2/plonky2" }                   # https://github.com/0xPolygonZero/plonky2
-# plonky2_ecdsa = {path = "../plonky2-ecdsa"}               # https://github.com/xiyu1984/plonky2-ecdsa/tree/development
+plonky2_ecdsa = {path = "../plonky2-ecdsa"}                 # https://github.com/xiyu1984/plonky2-ecdsa/tree/development
 # plonky2_keccak256 = {path = "../plonky2-keccak256"}       # https://github.com/kay404/plonky2-keccak256/tree/xy-dev
 # plonky2_u32 = {path = "../plonky2-u32"}                   # https://github.com/xiyu1984/plonky2-u32
 plonky2_field = {path = "../plonky2/field"}                 # https://github.com/0xPolygonZero/plonky2
