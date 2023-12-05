@@ -21,7 +21,8 @@ use plonky2::plonk::vars::{
 };
 use plonky2::util::serialization::{Buffer, IoResult, Read, Write};
 
-// This example is trivial but shows how to design and use `gate`
+/// *** Note: Remember that, `gate` is used for proving not calculating!!! ***
+/// This example is trivial but shows how to design and use `gate`
 #[derive(Debug, Clone, Default)]
 pub struct SimpleExpConstantGate {
     pub num_limbs: usize
@@ -108,6 +109,8 @@ impl<F: RichField + Extendable<D>, const D: usize> Gate<F, D> for SimpleExpConst
         self.eval_unfiltered_base_batch_packed(vars_base)
     }
 
+    /// This method shows the principle of the concrete circuit,
+    /// in which the `constraints` includes the conditions to be proven
     fn eval_unfiltered_circuit(
         &self,
         builder: &mut CircuitBuilder<F, D>,
@@ -223,6 +226,8 @@ impl<F: RichField + Extendable<D>, const D: usize> SimpleGenerator<F, D>
         deps
     }
 
+    /// This method is used to set the targets from the witness,
+    /// which will be used for proving
     fn run_once(&self, witness: &PartitionWitness<F>, out_buffer: &mut GeneratedValues<F>) {
         let get_wire_target = |column: usize| -> Target { 
             Target::wire(self.row, column)
